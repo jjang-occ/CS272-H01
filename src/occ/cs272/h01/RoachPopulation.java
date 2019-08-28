@@ -16,7 +16,32 @@ public class RoachPopulation
     public static final String ASSIGNMENT = "H01-A";
 
     // TODO: Complete the RoachPopulation class
+    private int count;
     
+    public RoachPopulation()
+    {
+        count = 0;
+    }
+    
+    public RoachPopulation(int initialSize)
+    {
+        count = initialSize;
+    }
+    
+    public void breed()
+    {
+        count *= 2;
+    }
+    
+    public void spray()
+    {
+        count = (count * 9) / 10;
+    }
+    
+    public int getRoaches()
+    {
+        return count;
+    }
     
     
 }
