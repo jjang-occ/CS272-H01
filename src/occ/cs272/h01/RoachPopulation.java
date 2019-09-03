@@ -5,14 +5,14 @@
 package occ.cs272.h01;
 
 /**
- * @author <your OCC login name such as sgilbert>
- * @version <the date>
+ * @author <jjang12>
+ * @version <9/3/2019>
  *
  */
 public class RoachPopulation
 {
     // TODO: You must fill these in correctly to get credit
-    public static final String STUDENT = "Put your login ID here";
+    public static final String STUDENT = "jjang12";
     public static final String ASSIGNMENT = "H01-A";
 
     // TODO: Complete the RoachPopulation class
