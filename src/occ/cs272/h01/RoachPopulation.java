@@ -17,12 +17,12 @@ public class RoachPopulation
 
     // TODO: Complete the RoachPopulation class
     private int population;
-    
+
     public RoachPopulation()
     {
     	population = 0;
     }
-    
+
     public RoachPopulation(int initialSize)
     {
     	population = initialSize;
@@ -42,6 +42,5 @@ public class RoachPopulation
     {
         return population;
     }
-    
     
 }
