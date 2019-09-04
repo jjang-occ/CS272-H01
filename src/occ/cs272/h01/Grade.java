@@ -8,13 +8,13 @@ import java.util.Scanner;
 
 /**
  * @author jjang12
- * @version 8/26/2019
+ * @version 9/3/2019
  *
  */
 public class Grade
 {
     // TODO: You must fill these in correctly to get credit
-    public static final String STUDENT = "Put your OCC login name here";
+    public static final String STUDENT = "jjang12";
     public static final String ASSIGNMENT = "H01-C";
     
     private String grade;
@@ -35,9 +35,41 @@ public class Grade
     public double getNumericGrade() 
     {
         //TODO Complete this method
+    	int n = grade.length();
+        char letter = grade.charAt(0);
+        char modifier = (n > 1) ? grade.charAt(1) : (char)0; // 0 is the null char
+        boolean valid = true;
         
+        double base = -1.0;
+        switch (letter)
+        {
+        	case 'A': case 'a': base = 4.0; break;
+        	case 'B': case 'b': base = 3.0; break;
+        	case 'C': case 'c': base = 2.0; break;
+        	case 'D': case 'd': base = 1.0; break;
+        	case 'F': case 'f': base = 0.0; break;
+        	default: valid = false;
+        }
         
-        return 10; 
+        double adjust = 0.0;
+        if (base >= 0.0)
+        {
+	        switch (modifier)
+	        {
+	        	case '+': adjust = 0.3; break;
+	        	case '-': adjust = -0.3; break;
+	        	case 0: break;
+	        	default: valid = false;
+	        }
+        }
+        
+        if (base == 0.0 && adjust != 0.0) valid = false; //F+ f+ F- f-
+        if (n > 2) valid = false;
+        
+        double num = base + adjust;
+        if (num > 4.0) num = 4.0;        
+        
+        return (valid) ? num : -1.0; 
     }
     
     /**
