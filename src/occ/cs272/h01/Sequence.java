@@ -28,29 +28,37 @@ public class Sequence
     
     // TODO: Write the three versions of slice() here
     
-    int[] slice(int start)
+    public Sequence slice(int start)
     {
-    	int s = start % array.length;
+        int s = (start < 0) ? start + array.length : start; 
     	int n = array.length - s;
     	int[] a = new int[n];
-    	return a;
+    	for (int i = 0; i < n; ++i)
+    	    a[i] = array[s + i];
+    	return new Sequence(a);
     }
     
-    int[] slice(int start, int end)
+    public Sequence slice(int start, int end)
     {
-    	int s = start % array.length;
-    	int e = start % array.length;
+        int s = (start < 0) ? start + array.length : start;
+        int e = (end < 0) ? end + array.length : end;
     	int n = e - s;
     	int[] a = new int[n];
-    	return a;
+    	for (int i = 0; i < n; ++i)
+            a[i] = array[s + i];
+    	return new Sequence(a);
     }
     
-    int[] slice(int start, int end, int step)
+    public Sequence slice(int start, int end, int step)
     {
-    	int[] a = new int[1];
-    	return a;
+        int s = (start < 0) ? start + array.length : start;
+        int e = (end < 0) ? end + array.length : end;
+        int n = e - s;
+        int[] a = new int[n / Math.abs(step)];
+        for (int i = 0; i < n; i += step)
+            a[i] = array[s + i];
+        return new Sequence(a);
     }  
-    
     
     
     @Override
@@ -72,7 +80,7 @@ public class Sequence
     {
         Sequence a = new Sequence(new int[]{1, 2, 3, 4, 5});
         // some informal testing
-//        System.out.println("a.slice(0)->" + a.slice(0));
+        System.out.println("a.slice(0)->" + a.slice(0));
 //        System.out.println("a.slice(1)->" + a.slice(1));
 //        System.out.println("a.slice(-1)->" + a.slice(-1));
 //        System.out.println("a.slice(-2)->" + a.slice(-2));
