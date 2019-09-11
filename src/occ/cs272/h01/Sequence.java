@@ -53,10 +53,22 @@ public class Sequence
     {
         int s = (start < 0) ? start + array.length : start;
         int e = (end < 0) ? end + array.length : end;
+        //boolean mark = false;
+        //if (e < 0) { e += array.length; mark = true; }
         int n = e - s;
-        int[] a = new int[n / Math.abs(step)];
-        for (int i = 0; i < n; i += step)
-            a[i] = array[s + i];
+        //if (mark) e -= array.length;
+        System.out.println("s = " + s);
+        System.out.println("e = " + e);
+        System.out.println("n = " + n);
+        int sz = (step == 1) ? n : 1 + (n-1) / Math.abs(step);
+        int[] a = new int[sz];
+        System.out.println("sz = " + sz);
+        int j = 0;
+        for (int i = 0; i < a.length; ++i)
+        {
+            a[j] = array[s + i * step];
+            j++;
+        }
         return new Sequence(a);
     }  
     
@@ -80,7 +92,7 @@ public class Sequence
     {
         Sequence a = new Sequence(new int[]{1, 2, 3, 4, 5});
         // some informal testing
-        System.out.println("a.slice(0)->" + a.slice(0));
+//        System.out.println("a.slice(0)->" + a.slice(0));
 //        System.out.println("a.slice(1)->" + a.slice(1));
 //        System.out.println("a.slice(-1)->" + a.slice(-1));
 //        System.out.println("a.slice(-2)->" + a.slice(-2));
@@ -90,6 +102,6 @@ public class Sequence
 //        System.out.println("a.slice(1, 5, 2)->" + a.slice(1, 5, 2));
 //        System.out.println("a.slice(1, 5, 3)->" + a.slice(1, 5, 3));
 //        System.out.println("a.slice(2, 5, 3)->" + a.slice(2, 5, 3));
-//        System.out.println("a.slice(-1, -6, -1)->" + a.slice(-1, -6, -1));
+        System.out.println("a.slice(-1, -6, -1)->" + a.slice(-1, -6, -1));
     }
 }
